@@ -12,7 +12,7 @@ namespace AQ1.Data.Repositories
     {
 
     }
-    public class FooterRepository: RepositoryBase<Footer>
+    public class FooterRepository: RepositoryBase<Footer>, IFooterRepository
     {
         public FooterRepository(IDbFactory dbFactory) : base(dbFactory)
         {

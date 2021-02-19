@@ -40,12 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NewsletterCategoryService.cs" />
+    <Compile Include="NewsletterService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AQ1.Common\AQ1.Common.csproj">
       <Project>{04c4192c-e15f-471f-8488-59e0fe86359f}</Project>
       <Name>AQ1.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AQ1.Data\AQ1.Data.csproj">
+      <Project>{685DE156-523F-4ED7-BAB3-9C1E646388C6}</Project>
+      <Name>AQ1.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\AQ1.Model\AQ1.Model.csproj">
       <Project>{6a149b52-47ff-4ff4-bed5-27f885ac9b1f}</Project>
