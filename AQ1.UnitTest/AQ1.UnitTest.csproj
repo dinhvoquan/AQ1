@@ -57,10 +57,6 @@
       <Project>{04c4192c-e15f-471f-8488-59e0fe86359f}</Project>
       <Name>AQ1.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AQ1.Data\AQ1.Data.csproj">
-      <Project>{7e072ef0-bc0e-44c1-99c2-e43e04d27c7e}</Project>
-      <Name>AQ1.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AQ1.Model\AQ1.Model.csproj">
       <Project>{6a149b52-47ff-4ff4-bed5-27f885ac9b1f}</Project>
       <Name>AQ1.Model</Name>
@@ -73,6 +69,9 @@
       <Project>{5663a5e5-6ebc-4ce2-8e88-a560fb6b23e4}</Project>
       <Name>AQ1.Web</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
