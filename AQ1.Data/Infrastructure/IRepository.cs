@@ -9,16 +9,16 @@ namespace AQ1.Data.Infrastructure
 {
     public interface IRepository<T> where T : class
     {
-        // Mark an entity as new
-        void Add(T entity);
+        // Marks an entity as new
+        T Add(T entity);
 
-        // Mark an entity as modified
+        // Marks an entity as modified
         void Update(T entity);
 
         // Marks an entity to be removed
-        void Delete(T entity);
+        T Delete(T entity);
 
-        void Delete(int id);
+        T Delete(int id);
 
         //Delete multi records
         void DeleteMulti(Expression<Func<T, bool>> where);
@@ -26,7 +26,7 @@ namespace AQ1.Data.Infrastructure
         // Get an entity by int id
         T GetSingleById(int id);
 
-        T GetSingleByCondition(Expression<Func<T,bool>> expression, string[] includes=null);
+        T GetSingleByCondition(Expression<Func<T, bool>> expression, string[] includes = null);
 
         IEnumerable<T> GetAll(string[] includes = null);
 
@@ -34,7 +34,7 @@ namespace AQ1.Data.Infrastructure
 
         IEnumerable<T> GetMultiPaging(Expression<Func<T, bool>> filter, out int total, int index = 0, int size = 50, string[] includes = null);
 
-        int Count(Expression<Func<T,bool>> where);
+        int Count(Expression<Func<T, bool>> where);
 
         bool CheckContains(Expression<Func<T, bool>> predicate);
     }

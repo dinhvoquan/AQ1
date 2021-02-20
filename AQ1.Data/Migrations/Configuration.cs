@@ -5,14 +5,14 @@ namespace AQ1.Data.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<AQ1.Data.AQ1DBContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<AQ1.Data.AQ1DbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(AQ1.Data.AQ1DBContext context)
+        protected override void Seed(AQ1.Data.AQ1DbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

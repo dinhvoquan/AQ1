@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace AQ1.Data
 {
-    public class AQ1DBContext : DbContext
+    public class AQ1DbContext : DbContext
     {
-        public AQ1DBContext() : base("AQ1Connection")
+        public AQ1DbContext() : base("AQ1Connection")
         {
             this.Configuration.LazyLoadingEnabled = false;
         }

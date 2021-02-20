@@ -11,9 +11,9 @@ namespace AQ1.Service
 {
     public interface INewsletterCategoryService
     {
-        void Add(NewsletterCategory newsletterCategory);
+        NewsletterCategory Add(NewsletterCategory newsletterCategory);
         void Update(NewsletterCategory newsletterCategoy);
-        void Delete(int id);
+        NewsletterCategory Delete(int id);
         IEnumerable<NewsletterCategory> GetAll();
         IEnumerable<NewsletterCategory> GetAllParentId(int parentId);
         NewsletterCategory GetById(int id);
@@ -27,14 +27,14 @@ namespace AQ1.Service
             this._newsletterCategoryRepository = newsletterCategoryRepository;
             this._unitOfWork = unitOfWork;
         }
-        public void Add(NewsletterCategory newsletterCategory)
+        public NewsletterCategory Add(NewsletterCategory newsletterCategory)
         {
-            _newsletterCategoryRepository.Add(newsletterCategory);
+            return _newsletterCategoryRepository.Add(newsletterCategory);
         }
 
-        public void Delete(int id)
+        public NewsletterCategory Delete(int id)
         {
-            _newsletterCategoryRepository.Delete(id);
+            return _newsletterCategoryRepository.Delete(id);
         }
 
         public IEnumerable<NewsletterCategory> GetAll()

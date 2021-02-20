@@ -9,15 +9,18 @@ namespace AQ1.Data.Infrastructure
     public class UnitOfWork : IUnitOfWork
     {
         private readonly IDbFactory dbFactory;
-        private AQ1DBContext dbContext;
+        private AQ1DbContext dbContext;
+
         public UnitOfWork(IDbFactory dbFactory)
         {
             this.dbFactory = dbFactory;
         }
-        public AQ1DBContext DbContext
+
+        public AQ1DbContext DbContext
         {
-            get { return DbContext ?? (dbContext = dbFactory.Init()); }
+            get { return dbContext ?? (dbContext = dbFactory.Init()); }
         }
+
         public void Commit()
         {
             DbContext.SaveChanges();

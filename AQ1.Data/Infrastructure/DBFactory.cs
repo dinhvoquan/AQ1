@@ -8,10 +8,10 @@ namespace AQ1.Data.Infrastructure
 {
     public class DBFactory: Disposable, IDbFactory
     {
-        private AQ1DBContext dbContext;
-        public AQ1DBContext Init()
+        private AQ1DbContext dbContext;
+        public AQ1DbContext Init()
         {
-            return dbContext ?? (dbContext = new AQ1DBContext());
+            return dbContext ?? (dbContext = new AQ1DbContext());
         }
 
         protected override void DisposeCore()

@@ -8,6 +8,6 @@ namespace AQ1.Data.Infrastructure
 {
     public interface IDbFactory: IDisposable
     {
-        AQ1DBContext Init();
+        AQ1DbContext Init();
     }
 }
