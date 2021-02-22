@@ -17,6 +17,7 @@ namespace AQ1.Service
         IEnumerable<NewsletterCategory> GetAll();
         IEnumerable<NewsletterCategory> GetAllParentId(int parentId);
         NewsletterCategory GetById(int id);
+        void Save();
     }
     public class NewsletterCategoryService : INewsletterCategoryService
     {
@@ -50,6 +51,11 @@ namespace AQ1.Service
         public NewsletterCategory GetById(int id)
         {
             return _newsletterCategoryRepository.GetSingleById(id);
+        }
+
+        public void Save()
+        {
+            _unitOfWork.Commit();
         }
 
         public void Update(NewsletterCategory newsletterCategoy)
