@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AQ1.Data.Infrastructure
 {
-    public class DBFactory: Disposable, IDbFactory
+    public class DbFactory: Disposable, IDbFactory
     {
         private AQ1DbContext dbContext;
         public AQ1DbContext Init()

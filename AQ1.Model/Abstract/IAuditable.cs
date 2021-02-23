@@ -8,7 +8,7 @@ namespace AQ1.Model.Abstract
 {
     public interface IAuditable
     {
-        string MetaKeywork { set; get; }
+        string MetaKeyword { set; get; }
 
         string MetaDescription { set; get; }
 

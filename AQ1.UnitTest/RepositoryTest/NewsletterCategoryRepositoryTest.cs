@@ -20,7 +20,7 @@ namespace AQ1.UnitTest.RepositoryTest
         [TestInitialize]       
         public void Initialize()
         {
-            dbFactory = new DBFactory();
+            dbFactory = new DbFactory();
             objRepository = new NewsletterCategoryRepository(dbFactory);
             unitOfWork = new UnitOfWork(dbFactory);
         }

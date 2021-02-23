@@ -12,44 +12,60 @@ using AQ1.Data.Repositories;
 using AQ1.Service;
 using System.Web.Mvc;
 using System.Web.Http;
+using System.Data.Odbc;
+using static AQ1.Web.App_Start.IdentityConfig;
+using Microsoft.AspNet.Identity;
+using AQ1.Model.Models;
+using System.Web;
+using Microsoft.Owin.Security.DataProtection;
 
 [assembly: OwinStartup(typeof(AQ1.Web.App_Start.Startup))]
 
 namespace AQ1.Web.App_Start
 {
-    public class Startup
+    public partial class Startup
     {
         public void Configuration(IAppBuilder app)
         {
             // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=316888
             ConfigAutofac(app);
+            ConfigureAuth(app);
         }
-
         private void ConfigAutofac(IAppBuilder app)
         {
             var builder = new ContainerBuilder();
+            builder.RegisterControllers(Assembly.GetExecutingAssembly());
+            // Register your Web API controllers.
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly()); 
 
-            //Register
-            builder.RegisterControllers(Assembly.GetExecutingAssembly());      
-            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
-            builder.RegisterType<DBFactory>().As<IDbFactory>().InstancePerRequest();
+            builder.RegisterType<DbFactory>().As<IDbFactory>().InstancePerRequest();
+
             builder.RegisterType<AQ1DbContext>().AsSelf().InstancePerRequest();
 
-            //Repositories
+            //Asp.net Identity
+            builder.RegisterType<ApplicationUserStore>().As<IUserStore<ApplicationUser>>().InstancePerRequest();
+            builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
+            builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
+            builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
+            builder.Register(c => app.GetDataProtectionProvider()).InstancePerRequest();
+
+
+            // Repositories
             builder.RegisterAssemblyTypes(typeof(NewsletterCategoryRepository).Assembly)
                 .Where(t => t.Name.EndsWith("Repository"))
                 .AsImplementedInterfaces().InstancePerRequest();
 
-            //Services
+            // Services
             builder.RegisterAssemblyTypes(typeof(NewsletterCategoryService).Assembly)
-                .Where(t => t.Name.EndsWith("Service"))
-                .AsImplementedInterfaces().InstancePerRequest();
+               .Where(t => t.Name.EndsWith("Service"))
+               .AsImplementedInterfaces().InstancePerRequest();
 
             Autofac.IContainer container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
-            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver((IContainer)container);
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver((IContainer)container); //Set the WebApi DependencyResolver
+
         }
     }
 }

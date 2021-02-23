@@ -14,7 +14,7 @@ namespace AQ1.Data.Repositories
     }
     public class ProductCategoryRepository : RepositoryBase<ProductCategory>, IProductCategoryRepository
     {
-        public ProductCategoryRepository(DBFactory dbFactory)
+        public ProductCategoryRepository(DbFactory dbFactory)
             : base(dbFactory)
         {
 

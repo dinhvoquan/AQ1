@@ -7,13 +7,13 @@ namespace AQ1.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class InitialDB : IMigrationMetadata
+    public sealed partial class initialDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialDB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initialDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "202102181503496_InitialDB"; }
+            get { return "202102230707066_initialDB"; }
         }
         
         string IMigrationMetadata.Source

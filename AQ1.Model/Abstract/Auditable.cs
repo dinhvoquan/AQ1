@@ -10,7 +10,7 @@ namespace AQ1.Model.Abstract
     public abstract class Auditable: IAuditable
     {
         [MaxLength(256)]
-        public string MetaKeywork { set; get; }
+        public string MetaKeyword { set; get; }
 
         [MaxLength(256)]
         public string MetaDescription { set; get; }

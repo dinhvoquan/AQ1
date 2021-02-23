@@ -1,6 +1,9 @@
 ﻿using AQ1.Model.Models;
 using AQ1.Service;
 using AQ1.Web.infrastructure.Core;
+using AQ1.Web.infrastructure.Extentions;
+using AQ1.Web.Models;
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,21 +28,15 @@ namespace AQ1.Web.Api
         {
             return CreateHttpResponseMessage(request, () =>
             {
-                HttpResponseMessage response = null;
-                if (!ModelState.IsValid)
-                {
-                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-                }
-                else
-                {
-                    var listCategory = _newsletterCategoryService.GetAll();
-                    response = request.CreateResponse(HttpStatusCode.OK, listCategory);
-                }
+                var listNewsletterCategory = _newsletterCategoryService.GetAll();
+                var listNewsletterCategoryViewModel = Mapper.Map<List<NewsletterCategoryViewModel>>(listNewsletterCategory);
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listNewsletterCategoryViewModel);
                 return response;
             });
         }
 
-        public HttpResponseMessage Post(HttpRequestMessage request, NewsletterCategory newsletterCategory)
+        [Route("add")]
+        public HttpResponseMessage Post(HttpRequestMessage request, NewsletterCategoryViewModel newsletterCategoryViewModel)
         {
             return CreateHttpResponseMessage(request, () => 
             {
@@ -50,7 +47,9 @@ namespace AQ1.Web.Api
                 }
                 else
                 {
-                    var category = _newsletterCategoryService.Add(newsletterCategory);
+                    NewsletterCategory newNewsletterCategory = new NewsletterCategory();
+                    newNewsletterCategory.UpdateNewsletterCategory(newsletterCategoryViewModel);
+                    var category = _newsletterCategoryService.Add(newNewsletterCategory);
                     _newsletterCategoryService.Save();
                     response = request.CreateResponse(HttpStatusCode.Created, category);
                 }
@@ -58,7 +57,8 @@ namespace AQ1.Web.Api
             });
         }
 
-        public HttpResponseMessage Put(HttpRequestMessage request, NewsletterCategory newsletterCategory)
+        [Route("update")]
+        public HttpResponseMessage Put(HttpRequestMessage request, NewsletterCategoryViewModel newsletterCategoryViewModel)
         {
             return CreateHttpResponseMessage(request, () =>
             {
@@ -69,7 +69,9 @@ namespace AQ1.Web.Api
                 }
                 else
                 {
-                    _newsletterCategoryService.Update(newsletterCategory);
+                    var newsletterCategoryDb = _newsletterCategoryService.GetById(newsletterCategoryViewModel.ID);
+                    newsletterCategoryDb.UpdateNewsletterCategory(newsletterCategoryViewModel);
+                    _newsletterCategoryService.Update(newsletterCategoryDb);
                     _newsletterCategoryService.Save();
                     response = request.CreateResponse(HttpStatusCode.OK);
                 }
