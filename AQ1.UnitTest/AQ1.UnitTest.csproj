@@ -93,10 +93,6 @@
       <Project>{28abd9dd-f645-4ad1-9aa3-a13ff1d38930}</Project>
       <Name>AQ1.Service</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AQ1.Web\AQ1.Web.csproj">
-      <Project>{5663a5e5-6ebc-4ce2-8e88-a560fb6b23e4}</Project>
-      <Name>AQ1.Web</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
