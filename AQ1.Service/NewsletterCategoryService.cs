@@ -58,9 +58,9 @@ namespace AQ1.Service
             _unitOfWork.Commit();
         }
 
-        public void Update(NewsletterCategory newsletterCategoy)
+        public void Update(NewsletterCategory newsletterCategory)
         {
-            _newsletterCategoryRepository.Update(newsletterCategoy);
+            _newsletterCategoryRepository.Update(newsletterCategory);
         }
     }
 }

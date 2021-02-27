@@ -43,6 +43,7 @@
     <Compile Include="ErrorService.cs" />
     <Compile Include="NewsletterCategoryService.cs" />
     <Compile Include="NewsletterService.cs" />
+    <Compile Include="ProductCategoryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -17,6 +17,7 @@ namespace AQ1.Web.Api
     public class NewsletterCategoryController : ApiControllerBase
     {
         INewsletterCategoryService _newsletterCategoryService;
+
         public NewsletterCategoryController(IErrorService errorService, INewsletterCategoryService newsletterCategoryService):
             base(errorService)
         {
@@ -26,7 +27,7 @@ namespace AQ1.Web.Api
         [Route("getall")]
         public HttpResponseMessage Get(HttpRequestMessage request)
         {
-            return CreateHttpResponseMessage(request, () =>
+            return CreateHttpResponse(request, () =>
             {
                 var listNewsletterCategory = _newsletterCategoryService.GetAll();
                 var listNewsletterCategoryViewModel = Mapper.Map<List<NewsletterCategoryViewModel>>(listNewsletterCategory);
@@ -38,7 +39,7 @@ namespace AQ1.Web.Api
         [Route("add")]
         public HttpResponseMessage Post(HttpRequestMessage request, NewsletterCategoryViewModel newsletterCategoryViewModel)
         {
-            return CreateHttpResponseMessage(request, () => 
+            return CreateHttpResponse(request, () => 
             {
                 HttpResponseMessage response = null;
                 if (!ModelState.IsValid)
@@ -60,7 +61,7 @@ namespace AQ1.Web.Api
         [Route("update")]
         public HttpResponseMessage Put(HttpRequestMessage request, NewsletterCategoryViewModel newsletterCategoryViewModel)
         {
-            return CreateHttpResponseMessage(request, () =>
+            return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
                 if (!ModelState.IsValid)
@@ -81,7 +82,7 @@ namespace AQ1.Web.Api
 
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)
         {
-            return CreateHttpResponseMessage(request, () =>
+            return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
                 if (!ModelState.IsValid)

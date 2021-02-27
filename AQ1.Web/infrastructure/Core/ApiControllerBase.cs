@@ -14,14 +14,15 @@ namespace AQ1.Web.infrastructure.Core
 {
     public class ApiControllerBase : ApiController
     {
-       
+
         private IErrorService _errorService;
+
         public ApiControllerBase(IErrorService errorService)
         {
             this._errorService = errorService;
         }
 
-        protected HttpResponseMessage CreateHttpResponseMessage(HttpRequestMessage requestMessage, Func<HttpResponseMessage> function)
+        protected HttpResponseMessage CreateHttpResponse(HttpRequestMessage requestMessage, Func<HttpResponseMessage> function)
         {
             HttpResponseMessage response = null;
             try
@@ -29,11 +30,11 @@ namespace AQ1.Web.infrastructure.Core
                 response = function.Invoke();
             }
             catch (DbEntityValidationException ex)
-            {              
-                foreach(var eve in ex.EntityValidationErrors)
+            {
+                foreach (var eve in ex.EntityValidationErrors)
                 {
                     Trace.WriteLine($"Entity of type \"{eve.Entry.Entity.GetType().Name}\" in state \"{eve.Entry.State}\" has the following validation error.");
-                    foreach(var ve in eve.ValidationErrors)
+                    foreach (var ve in eve.ValidationErrors)
                     {
                         Trace.WriteLine($"- Property: \"{ve.PropertyName}\", Error: \"{ve.ErrorMessage}\"");
                     }
@@ -41,12 +42,12 @@ namespace AQ1.Web.infrastructure.Core
                 LogError(ex);
                 response = requestMessage.CreateResponse(HttpStatusCode.BadRequest, ex.InnerException.Message);
             }
-            catch(DbUpdateException dbEx)
-            {               
+            catch (DbUpdateException dbEx)
+            {
                 LogError(dbEx);
                 response = requestMessage.CreateResponse(HttpStatusCode.BadRequest, dbEx.InnerException.Message);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 LogError(ex);
                 response = requestMessage.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
@@ -54,7 +55,7 @@ namespace AQ1.Web.infrastructure.Core
             return response;
         }
 
-        public void LogError(Exception ex)
+        private void LogError(Exception ex)
         {
             try
             {
@@ -67,7 +68,6 @@ namespace AQ1.Web.infrastructure.Core
             }
             catch
             {
-
             }
         }
     }

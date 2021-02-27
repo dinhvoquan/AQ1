@@ -16,6 +16,10 @@ namespace AQ1.Web.Mappings
             Mapper.CreateMap<Newsletter, NewsletterViewModel>();
             Mapper.CreateMap<NewsletterCategory, NewsletterCategoryViewModel>();
             Mapper.CreateMap<Tag, TagViewModel>();
+
+            Mapper.CreateMap<ProductCategory, ProductCategoryViewModel>();
+            Mapper.CreateMap<Product, ProductViewModel>();
+            Mapper.CreateMap<ProductTag, ProductTagViewModel>();
         }
     }
 }
