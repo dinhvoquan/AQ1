@@ -237,6 +237,7 @@
     <Content Include="app\shared\filters\statusFilter.js" />
     <Content Include="app\shared\modules\aq1.common.js" />
     <Content Include="app\shared\services\apiService.js" />
+    <Content Include="app\shared\services\notificationService.js" />
     <Content Include="Assets\admin\css\AdminLTE.css" />
     <Content Include="Assets\admin\css\AdminLTE.min.css" />
     <Content Include="Assets\admin\css\skins\skin-black-light.css" />
@@ -455,6 +456,10 @@
     <Content Include="Assets\admin\libs\slimScroll\examples\style.css" />
     <Content Include="Assets\admin\libs\slimScroll\jquery.slimscroll.js" />
     <Content Include="Assets\admin\libs\slimScroll\jquery.slimscroll.min.js" />
+    <Content Include="Assets\admin\libs\toastr\toastr.css" />
+    <Content Include="Assets\admin\libs\toastr\toastr.js" />
+    <Content Include="Assets\admin\libs\toastr\toastr.min.css" />
+    <Content Include="Assets\admin\libs\toastr\toastr.min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -465,9 +470,6 @@
     <Content Include=".bowerrc" />
     <Content Include="bower.json" />
     <Content Include="Assets\admin\libs\angular\.bower.json" />
-    <Content Include="Assets\admin\libs\angular\angular.min.js.gzip" />
-    <Content Include="Assets\admin\libs\angular\angular.min.js.map" />
-    <Content Include="Assets\admin\libs\angular\bower.json" />
     <Content Include="Assets\admin\libs\angular\LICENSE.md" />
     <Content Include="Assets\admin\libs\angular\package.json" />
     <Content Include="Assets\admin\libs\angular\README.md" />
@@ -592,6 +594,15 @@
     <Content Include="Assets\admin\libs\bootstrap\Gemfile.lock" />
     <Content Include="Assets\admin\libs\bootstrap\ISSUE_TEMPLATE.md" />
     <Content Include="Assets\admin\libs\jquery\src\.jshintrc" />
+    <Content Include="Assets\admin\libs\angular\angular.min.js.gzip" />
+    <Content Include="Assets\admin\libs\angular\angular.min.js.map" />
+    <Content Include="Assets\admin\libs\toastr\.bower.json" />
+    <Content Include="Assets\admin\libs\toastr\bower.json" />
+    <Content Include="Assets\admin\libs\toastr\LICENSE" />
+    <Content Include="Assets\admin\libs\toastr\README.md" />
+    <Content Include="Assets\admin\libs\toastr\toastr.js.map" />
+    <Content Include="Assets\admin\libs\toastr\toastr.less" />
+    <Content Include="Assets\admin\libs\toastr\toastr.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

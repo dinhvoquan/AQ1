@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link href="~/Assets/admin/libs/toastr/toastr.css" rel="stylesheet" />
     <!-- Theme style -->
     <link href="~/Assets/admin/css/AdminLTE.css" rel="stylesheet" />
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -206,10 +207,10 @@
                         <a href="#">
                             <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
                         </a>
-                        <ul class="treeview-menu">
+                        @*<ul class="treeview-menu">
                             <li><a ui-sref="products"><i class="fa fa-circle-o"></i> Poduct v1</a></li>
                             <li><a ui-sref="product_add"><i class="fa fa-circle-o"></i> Add product v2</a></li>
-                        </ul>
+                        </ul>*@
                     </li>
                     <li class="treeview">
                         <a href="#">
@@ -521,10 +522,13 @@
     <!--Angular-->
     <script src="~/Assets/admin/libs/angular/angular.js"></script>
     <script src="~/Assets/admin/libs/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="~/Assets/admin/libs/toastr/toastr.js"></script>
+
     <script src="~/app/shared/modules/aq1.common.js"></script>
     <script src="~/app/shared/filters/statusFilter.js"></script>
     <script src="~/app/shared/services/apiService.js"></script>
     <script src="~/app/shared/directives/pagerDirective.js"></script>
+    <script src="~/app/shared/services/notificationService.js"></script>
     <script src="~/app/components/products/products.module.js"></script>
     <script src="~/app/components/product_categories/productCategory.module.js"></script>
     <script src="~/app/app.js"></script>   
