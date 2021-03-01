@@ -1,7 +1,7 @@
 ﻿(function (app) {
     app.factory('notificationService', notificationService);
 
-    function notificationService() {      
+    function notificationService() {           
         toastr.options = {
             "debug": false,
             "positionClass": "toast-top-right",
