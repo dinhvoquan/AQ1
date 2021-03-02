@@ -10,17 +10,6 @@
             Name: "Danh mục 1"
         }
 
-        //$scope.AddProductCategory = AddProductCategory;
-
-        //function AddProductCategory() {
-        //    apiService.post('api/productcategory/create', $scope.productCategory,
-        //        function (result) {
-        //            notificationService.displaySuccess(result.data.Name + ' đã được thêm mới.');
-        //            $state.go('product_categories');
-        //        }, function (error) {
-        //            notificationService.displayError('Thêm mới không thành công.');
-        //        });
-        //}
         $scope.AddProductCategory = AddProductCategory;
         function AddProductCategory() {
             apiService.post('/api/productcategory/create', $scope.productCategory,
@@ -42,5 +31,4 @@
 
         loadParentCategory();
     }
-
 })(angular.module('aq1.product_categories'));

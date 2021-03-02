@@ -23,4 +23,5 @@ namespace AQ1.Web.infrastructure.Core
         public IEnumerable<T> Items { set; get; }
 
     }
+
 }

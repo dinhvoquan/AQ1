@@ -1,4 +1,4 @@
-﻿(function (app) {
+﻿(function (app) {    
     'use strict';
 
     app.directive('pagerDirective', pagerDirective);
@@ -35,16 +35,14 @@
                         for (var i = start; i != end; ++i) {
                             ret.push(i);
                         }
-
                         return ret;
                     };
 
                     $scope.pagePlus = function (count) {
                         return +$scope.page + count;
                     }
-
-                }]
+                }
+            ]
         }
     }
-
 })(angular.module('aq1.common'));
