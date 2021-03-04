@@ -30,13 +30,13 @@ namespace AQ1.Web.Models
 
         public string Detail { set; get; }
 
+        public string Tags { set; get; }
+
         public bool? HomeFlag { set; get; }
 
         public bool? HotFlag { set; get; }
 
         public int? ViewCount { set; get; }
-
-        public virtual ProductCategory ProductCategory { set; get; }
 
         public DateTime? CreatedDate { set; get; }
 
@@ -51,5 +51,7 @@ namespace AQ1.Web.Models
         public string MetaDescription { set; get; }
 
         public bool Status { set; get; }
+
+        public virtual ProductCategory ProductCategory { set; get; }
     }
 }

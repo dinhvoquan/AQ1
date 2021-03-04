@@ -1,5 +1,4 @@
 ﻿/// <reference path="/Assets/admin/libs/angular/angular.js" />
-
 (function () {
     angular.module('aq1.products', ['aq1.common']).config(config);
 
@@ -14,6 +13,10 @@
             url: "/product_add",
             templateUrl: "/app/components/products/productAddView.html",
             controller: "productAddController"
+        }).state('product_edit', {
+            url: "/product_edit/:id",
+            templateUrl: "/app/components/products/productEditView.html",
+            controller: "productEditController"
         });
     }
 })();

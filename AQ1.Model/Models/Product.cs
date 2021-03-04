@@ -46,6 +46,8 @@ namespace AQ1.Model.Models
 
         public string Detail { set; get; }
 
+        public string Tags { set; get; }
+
         public bool? HomeFlag { set; get; }
 
         public bool? HotFlag { set; get; }
