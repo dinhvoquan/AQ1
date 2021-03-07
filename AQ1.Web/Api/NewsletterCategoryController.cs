@@ -14,6 +14,7 @@ using System.Web.Http;
 namespace AQ1.Web.Api
 {
     [RoutePrefix("api/newslettercategory")]
+    [Authorize]
     public class NewsletterCategoryController : ApiControllerBase
     {
         INewsletterCategoryService _newsletterCategoryService;

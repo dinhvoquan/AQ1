@@ -15,6 +15,7 @@ using System.Web.Script.Serialization;
 namespace AQ1.Web.Api
 {
     [RoutePrefix("api/productcategory")]
+    [Authorize]
     public class ProductCategoryController : ApiControllerBase
     {
         #region Initialize
@@ -100,7 +101,7 @@ namespace AQ1.Web.Api
                     var newProductCategory = new ProductCategory();
                     newProductCategory.UpdateProductCategory(productCategoryViewModel);
                     newProductCategory.CreatedDate = DateTime.Now;
-
+                    newProductCategory.CreatedBy = User.Identity.Name;
                     _productCategoryService.Add(newProductCategory);
                     _productCategoryService.Save();
 
@@ -128,7 +129,7 @@ namespace AQ1.Web.Api
                     var dbProductCategory = _productCategoryService.GetById(productCategoryViewModel.ID);
                     dbProductCategory.UpdateProductCategory(productCategoryViewModel);
                     dbProductCategory.UpdatedDate = DateTime.Now;
-
+                    dbProductCategory.UpdatedBy = User.Identity.Name;
                     _productCategoryService.Update(dbProductCategory);
                     _productCategoryService.Save();
 

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<AQ1.Web.Models.ProductCategoryViewModel>
+@*<ul>
+    <li><a href="#">Mobile Phones</a></li>
+    <li><a href="#">Desktop</a></li>
+    <li><a href="#">Laptop</a></li>
+    <li><a href="#">Accessories</a></li>
+    <li><a href="#">Software</a></li>
+    <li><a href="#">Sports &amp; Fitness</a></li>
+    <li><a href="#">Footwear</a></li>
+    <li><a href="#">Jewellery</a></li>
+    <li><a href="#">Clothing</a></li>
+    <li><a href="#">Home Decor &amp; Kitchen</a></li>
+    <li><a href="#">Beauty &amp; Healthcare</a></li>
+    <li><a href="#">Toys, Kids &amp; Babies</a></li>
+</ul>*@
+
+<ul>
+    @foreach (var category in Model.Where(x => x.ParentID == null))
+    {
+        var url = "/" + category.Alias + ".pc-" + category.ID + ".html";
+        var childCategories = Model.Where(x => x.ParentID == category.ID);
+        <li>
+            <a href="@url">@category.Name @(childCategories.Count() > 0 ? "<img class=\"categories\" src=\"/Assets/client/images/drop_arrow.png\" alt=\"\" />" : "") </a>
+            @if (childCategories.Count() > 0)
+            {
+                <ul>
+                    @foreach (var childCategory in childCategories)
+                    {
+                        var childUrl = "/" + childCategory.Alias + ".pc-" + childCategory.ID + ".html";
+                        <li><a href="@childUrl">@childCategory.Name</a></li>
+                    }
+                </ul>
+            }
+        </li>
+
+
+    }
+</ul>

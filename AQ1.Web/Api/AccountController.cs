@@ -54,7 +54,7 @@ namespace AQ1.Web.Api
         }
 
         [HttpPost]
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [Route("login")]
         public async Task<HttpResponseMessage> Login(HttpRequestMessage request, string userName, string password, bool rememberMe)
         {
