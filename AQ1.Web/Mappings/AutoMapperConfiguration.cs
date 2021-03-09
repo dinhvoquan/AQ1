@@ -22,6 +22,8 @@ namespace AQ1.Web.Mappings
             Mapper.CreateMap<ProductTag, ProductTagViewModel>();
 
             Mapper.CreateMap<Footer, FooterViewModel>();
+
+            Mapper.CreateMap<Slide, SlideViewModel>();
         }
     }
 }

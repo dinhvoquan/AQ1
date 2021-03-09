@@ -38,6 +38,7 @@ namespace AQ1.Web.infrastructure.Extentions
             newsletter.CategoryID = newsletterViewModel.CategoryID;
             newsletter.Image = newsletterViewModel.Image;
             newsletter.HomeFlag = newsletterViewModel.HomeFlag;
+            newsletter.HotFlag = newsletterViewModel.HotFlag;
             newsletter.ViewCount = newsletterViewModel.ViewCount;
 
             newsletter.CreatedDate = newsletterViewModel.CreatedDate;
@@ -83,6 +84,7 @@ namespace AQ1.Web.infrastructure.Extentions
             product.Promotion = productViewModel.Promotion;
             product.Warranty = productViewModel.Warranty;
             product.HomeFlag = productViewModel.HomeFlag;
+            product.HotFlag = productViewModel.HotFlag;
             product.ViewCount = productViewModel.ViewCount;
             product.Tags = productViewModel.Tags;
 

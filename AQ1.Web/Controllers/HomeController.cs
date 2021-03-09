@@ -13,17 +13,33 @@ namespace AQ1.Web.Controllers
     public class HomeController : Controller
     {
         IProductCategoryService _productCategoryService;
+        IProductService _productService;
         ICommonService _commonService;
         
-        public HomeController(IProductCategoryService productCategoryService,ICommonService commonService)
+        public HomeController(IProductCategoryService productCategoryService, IProductService productService, ICommonService commonService)
         {
             _productCategoryService = productCategoryService;
+            _productService = productService;
             _commonService = commonService;
         }
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            var slideModel = _commonService.GetSlides();
+            var slideView = Mapper.Map<IEnumerable<Slide>, IEnumerable<SlideViewModel>>(slideModel);
+            var homeViewModel = new HomeViewModel();
+            homeViewModel.Slides = slideView;
+
+            var lastestProducModel = _productService.GetLastestProduct(3);
+            var topSaleProductModel = _productService.GetHotProduct(3);
+            var lastestProductViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(lastestProducModel);
+            var topSaleProductViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(topSaleProductModel);
+            homeViewModel.LastestProducts = lastestProductViewModel;
+            homeViewModel.TopSaleProducts = topSaleProductViewModel;
+
+            return View(homeViewModel);
+
+            //return View();
         }
 
         //Home Shoppe

@@ -18,7 +18,8 @@
 
         protected override void Seed(AQ1.Data.AQ1DbContext context)
         {
-            CreateProductCategorySample(context);
+            //CreateProductCategorySample(context);
+            CreateSlide(context);
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
@@ -45,18 +46,57 @@
             //var adminUser = manager.FindByEmail("dinhvoquan@gmail.com");
             //manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
         }
-      
-        private void CreateProductCategorySample(AQ1.Data.AQ1DbContext context)
+
+        //private void CreateProductCategorySample(AQ1.Data.AQ1DbContext context)
+        //{
+        //    if (context.ProductCategories.Count() == 0)
+        //    {
+        //        List<ProductCategory> listProductCategory = new List<ProductCategory>()
+        //        {
+        //            new ProductCategory() { Name="Điện lạnh", Alias="dien-lanh",Status=true}
+        //            //new ProductCategory() { Name = "Điện thoại", Alias = "dien-thoai", Status = true },
+        //            //new ProductCategory() { Name = "Điện gia dụng", Alias = "dien-gia-dung", Status = true }
+        //        };
+        //        context.ProductCategories.AddRange(listProductCategory);
+        //        context.SaveChanges();
+        //    }
+        //}
+
+        private void CreateSlide(AQ1.Data.AQ1DbContext context)
         {
-            if (context.ProductCategories.Count() == 0)
+            if (context.Slides.Count() == 0)
             {
-                List<ProductCategory> listProductCategory = new List<ProductCategory>()
+                List<Slide> listSlide = new List<Slide>()
                 {
-                     new ProductCategory() { Name="Điện lạnh", Alias="dien-lanh",Status=true},
-                new ProductCategory() { Name = "Điện thoại", Alias = "dien-thoai", Status = true },
-                new ProductCategory() { Name = "Điện gia dụng", Alias = "dien-gia-dung", Status = true }
+                    new Slide()
+                    {
+                        Name="Slide1",
+                        DisplayOrder=1,
+                        Status=true,
+                        URL="#",
+                        Image="/Content/images/bag.jpg",
+                        Detail=@"	<h2>FLAT 50% 0FF</h2>
+                                <label>FOR ALL PURCHASE <b>VALUE</b></label>
+                                <p>Lorem ipsum dolor sit amet, consectetur 
+                            adipisicing elit, sed do eiusmod tempor incididunt ut labore et </ p >
+                        <span class=""on-get"">GET NOW</span>"
+                    },
+                    new Slide()
+                    {
+                        Name="Slide2",
+                        DisplayOrder=2,
+                        Status=true,
+                        URL="#",
+                        Image="/Content/images/bag1.jpg",
+                        Detail=@"<h2>FLAT 50% 0FF</h2>
+                                <label>FOR ALL PURCHASE <b>VALUE</b></label>
+
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </ p >
+
+                                <span class=""on-get"">GET NOW</span>"
+                    },
                 };
-                context.ProductCategories.AddRange(listProductCategory);
+                context.Slides.AddRange(listSlide);
                 context.SaveChanges();
             }
         }

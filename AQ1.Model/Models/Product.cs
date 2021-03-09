@@ -39,6 +39,8 @@ namespace AQ1.Model.Models
 
         public decimal? Promotion { set; get; }
 
+        public decimal? SalePrice { set; get; }
+
         public int? Warranty { set; get; }
 
         [MaxLength(500)]
