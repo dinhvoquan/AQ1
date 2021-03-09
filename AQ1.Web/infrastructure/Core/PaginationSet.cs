@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace AQ1.Web.infrastructure.Core
+namespace AQ1.Web.Infrastructure.Core
 {
     public class PaginationSet<T>
     {
@@ -19,6 +19,8 @@ namespace AQ1.Web.infrastructure.Core
         public int TotalPages { set; get; }
 
         public int TotalCount { set; get; }
+
+        public int MaxPage { set; get; }
 
         public IEnumerable<T> Items { set; get; }
 

@@ -1,7 +1,7 @@
 ﻿using AQ1.Model.Models;
 using AQ1.Service;
-using AQ1.Web.infrastructure.Core;
-using AQ1.Web.infrastructure.Extentions;
+using AQ1.Web.Infrastructure.Core;
+using AQ1.Web.Infrastructure.Extentions;
 using AQ1.Web.Models;
 using AutoMapper;
 using System;

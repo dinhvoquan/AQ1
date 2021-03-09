@@ -10,7 +10,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace AQ1.Web.infrastructure.Core
+namespace AQ1.Web.Infrastructure.Core
 {
     public class ApiControllerBase : ApiController
     {

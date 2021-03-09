@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace AQ1.Web.infrastructure.Extentions
+namespace AQ1.Web.Infrastructure.Extentions
 {
     public static class EntityExtentions
     {

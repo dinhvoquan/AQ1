@@ -1,5 +1,5 @@
 ﻿using AQ1.Service;
-using AQ1.Web.infrastructure.Core;
+using AQ1.Web.Infrastructure.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -35,8 +35,8 @@ namespace AQ1.Web
 
             routes.MapRoute(
                name: "Product Category",
-               url: "{alias}.pc-{productCategoryId}.html",
-               defaults: new { controller = "Product", action = "Category", productCategoryId = UrlParameter.Optional },
+               url: "{alias}.pc-{id}.html",
+               defaults: new { controller = "Product", action = "Category", id = UrlParameter.Optional },
                namespaces: new string[] { "AQ1.Web.Controllers" }
                );
 

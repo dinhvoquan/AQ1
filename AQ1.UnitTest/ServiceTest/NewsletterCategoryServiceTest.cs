@@ -52,7 +52,7 @@ namespace AQ1.UnitTest.ServiceTest
         public void NewsletterCategory_Service_Create()
         {
             NewsletterCategory category = new NewsletterCategory();
-            int id = 1;
+            //int id = 1;
             category.Name = "Test";
             category.Alias = "test";
             category.Status = true;
