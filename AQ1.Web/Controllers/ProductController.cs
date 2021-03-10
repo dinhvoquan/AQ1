@@ -13,14 +13,6 @@ namespace AQ1.Web.Controllers
 {
     public class ProductController : Controller
     {
-        // GET: Product
-        //IProductService _productService;
-        //IProductCategoryService _productCategoryService;
-        //public ProductController(IProductService productService, IProductCategoryService productCategoryService)
-        //{
-        //    this._productService = productService;
-        //    this._productCategoryService = productCategoryService;
-        //}
         IProductService _productService;
         IProductCategoryService _productCategoryService;
         public ProductController(IProductService productService, IProductCategoryService productCategoryService)
@@ -29,33 +21,17 @@ namespace AQ1.Web.Controllers
             this._productCategoryService = productCategoryService;
         }
 
+        // GET: Product
         public ActionResult Detail(int productId)
         {
             return View();
         }
 
-        public ActionResult Category(int id, int page = 1)
+        public ActionResult Category(int id, int page = 1, string sort = "")
         {
-            //int pageSize = 3;
-            //int totalRow = 0;
-            //var productModel = _productService.GetListProductByCategoryIdPaging(id, page, pageSize, out totalRow);
-            //var productViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(productModel);
-            //int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
-
-            //var category = _productCategoryService.GetById(id);
-            //ViewBag.Category = Mapper.Map<ProductCategory, ProductCategoryViewModel>(category);
-            //var paginationSet = new PaginationSet<ProductViewModel>()
-            //{
-            //    Items = productViewModel,
-            //    MaxPage = 5,
-            //    Page = page,
-            //    TotalCount = totalRow,
-            //    TotalPages = totalPage
-            //};
-            //return View(paginationSet);
             int pageSize = 3;
             int totalRow = 0;
-            var productModel = _productService.GetListProductByCategoryIdPaging(id, page, pageSize, out totalRow);
+            var productModel = _productService.GetListProductByCategoryIdPaging(id, page, pageSize, sort, out totalRow);
             var productViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(productModel);
             int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
 
@@ -66,10 +42,60 @@ namespace AQ1.Web.Controllers
                 Items = productViewModel,
                 MaxPage = 5,
                 Page = page,
-                TotalCount=totalRow,
-                TotalPages=totalPage
+                TotalCount = totalRow,
+                TotalPages = totalPage
             };
             return View(paginationSet);
+        }
+
+        //public ActionResult Search(string keyword, int page = 1, string sort = "")
+        //{
+        //    int pageSize = int.Parse(ConfigHelper.GetByKey("PageSize"));
+        //    int totalRow = 0;
+        //    var productModel = _productService.Search(keyword, page, pageSize, sort, out totalRow);
+        //    var productViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(productModel);
+        //    int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
+
+        //    ViewBag.Keyword = keyword;
+        //    var paginationSet = new PaginationSet<ProductViewModel>()
+        //    {
+        //        Items = productViewModel,
+        //        MaxPage = int.Parse(ConfigHelper.GetByKey("MaxPage")),
+        //        Page = page,
+        //        TotalCount = totalRow,
+        //        TotalPages = totalPage
+        //    };
+
+        //    return View(paginationSet);
+        //}
+
+        public ActionResult Search(string keyword, int page = 1, string sort = "")
+        {
+            int pageSize = 3;
+            int totalRow = 0;
+            var produtModel = _productService.Search(keyword, page, pageSize, sort, out totalRow);
+            var productViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(produtModel);
+            int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
+
+            ViewBag.Keyword = keyword;
+            var paginationSet = new PaginationSet<ProductViewModel>()
+            {
+                Items = productViewModel,
+                MaxPage = 5,
+                Page = page,
+                TotalCount = totalRow,
+                TotalPages = totalPage
+            };
+            return View(paginationSet);
+        }
+
+        public JsonResult GetListProductByName(string keyword)
+        {
+            var model = _productService.GetListProductByName(keyword);
+            return Json(new
+            {
+                data = model
+            }, JsonRequestBehavior.AllowGet);
         }
     }
 }
