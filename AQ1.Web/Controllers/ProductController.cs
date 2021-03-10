@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace AQ1.Web.Controllers
 {
@@ -24,7 +25,15 @@ namespace AQ1.Web.Controllers
         // GET: Product
         public ActionResult Detail(int productId)
         {
-            return View();
+            var productModel = _productService.GetById(productId);
+            var productViewModel = Mapper.Map<Product, ProductViewModel>(productModel);
+            var relatedProduct = _productService.GetRelatedProducts(productId, 4);
+            ViewBag.RelatedProducts=Mapper.Map<IEnumerable<Product>,IEnumerable<ProductViewModel>>(relatedProduct);
+
+            List<string> listImages = new JavaScriptSerializer().Deserialize<List<string>>(productViewModel.MoreImage);
+            ViewBag.MoreImage = listImages;
+
+            return View(productViewModel);
         }
 
         public ActionResult Category(int id, int page = 1, string sort = "")
@@ -48,26 +57,6 @@ namespace AQ1.Web.Controllers
             return View(paginationSet);
         }
 
-        //public ActionResult Search(string keyword, int page = 1, string sort = "")
-        //{
-        //    int pageSize = int.Parse(ConfigHelper.GetByKey("PageSize"));
-        //    int totalRow = 0;
-        //    var productModel = _productService.Search(keyword, page, pageSize, sort, out totalRow);
-        //    var productViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(productModel);
-        //    int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
-
-        //    ViewBag.Keyword = keyword;
-        //    var paginationSet = new PaginationSet<ProductViewModel>()
-        //    {
-        //        Items = productViewModel,
-        //        MaxPage = int.Parse(ConfigHelper.GetByKey("MaxPage")),
-        //        Page = page,
-        //        TotalCount = totalRow,
-        //        TotalPages = totalPage
-        //    };
-
-        //    return View(paginationSet);
-        //}
 
         public ActionResult Search(string keyword, int page = 1, string sort = "")
         {

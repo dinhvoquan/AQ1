@@ -52,6 +52,8 @@ namespace AQ1.Web.Models
 
         public bool Status { set; get; }
 
+        public int Quantity { set; get; }
+
         public virtual ProductCategory ProductCategory { set; get; }
     }
 }

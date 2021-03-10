@@ -56,6 +56,8 @@ namespace AQ1.Model.Models
 
         public int? ViewCount { set; get; }
 
+        public int Quantity { set; get; }
+
         [ForeignKey("CategoryID")]
         public virtual ProductCategory ProductCategory { set; get; }
 

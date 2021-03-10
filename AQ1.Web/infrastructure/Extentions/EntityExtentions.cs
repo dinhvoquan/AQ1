@@ -87,6 +87,7 @@ namespace AQ1.Web.Infrastructure.Extentions
             product.HotFlag = productViewModel.HotFlag;
             product.ViewCount = productViewModel.ViewCount;
             product.Tags = productViewModel.Tags;
+            product.Quantity = productViewModel.Quantity;
 
             product.CreatedDate = productViewModel.CreatedDate;
             product.CreatedBy = productViewModel.CreatedBy;

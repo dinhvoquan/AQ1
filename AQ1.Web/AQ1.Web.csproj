@@ -4725,6 +4725,7 @@
     <Content Include="Assets\admin\libs\toastr\toastr.min.css" />
     <Content Include="Assets\admin\libs\toastr\toastr.min.js" />
     <Content Include="Assets\client\css\easy-responsive-tabs.css" />
+    <Content Include="Assets\client\css\etalage.css" />
     <Content Include="Assets\client\css\global.css" />
     <Content Include="Assets\client\css\slider.css" />
     <Content Include="Assets\client\css\style.css" />
@@ -4784,6 +4785,8 @@
     <Content Include="Assets\client\js\jquery-1.7.2.min.js" />
     <Content Include="Assets\client\js\jquery.accordion.js" />
     <Content Include="Assets\client\js\jquery.easing.js" />
+    <Content Include="Assets\client\js\jquery.etalage.min.js" />
+    <Content Include="Assets\client\js\jquery.flexisel.js" />
     <Content Include="Assets\client\js\move-top.js" />
     <Content Include="Assets\client\js\script.js" />
     <Content Include="Assets\client\js\slides.min.jquery.js" />
@@ -5163,6 +5166,7 @@
     <Content Include="Views\Shared\Category.cshtml" />
     <Content Include="Views\Product\Category.cshtml" />
     <Content Include="Views\Product\Search.cshtml" />
+    <Content Include="Views\Product\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\components\application_groups\" />
