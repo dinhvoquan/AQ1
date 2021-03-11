@@ -24,6 +24,8 @@ namespace AQ1.Web.Mappings
             Mapper.CreateMap<Footer, FooterViewModel>();
 
             Mapper.CreateMap<Slide, SlideViewModel>();
+
+            Mapper.CreateMap<Page, PageViewModel>();
         }
     }
 }

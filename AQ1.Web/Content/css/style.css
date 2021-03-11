@@ -1173,6 +1173,8 @@ ul.face-in-to li a span.facebook-in{
 	border-top:1px solid rgba(85, 85, 85, 0.15);
 	border-bottom: 1px solid rgba(85, 85, 85, 0.15);
 	padding:1em 0;
+    /*Viet them*/
+    display: block;
 }
 .span_3_of_2 h4{
 	font-size: 1.5em;

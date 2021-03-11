@@ -23,6 +23,7 @@ namespace AQ1.Model.Models
         [ForeignKey("ProductID")]
         public virtual Product Product { set; get; }
 
+        [ForeignKey("TagID")]
         public virtual Tag Tag { set; get; }
     }
 }

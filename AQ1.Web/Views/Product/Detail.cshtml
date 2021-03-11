@@ -6,46 +6,45 @@
 }
 <link href="~/Assets/client/css/etalage.css" rel="stylesheet" />
 @section footerJS{
-
-    <script src="~/Assets/client/js/jquery.etalage.min.js"></script>
-    <script src="~/Assets/client/js/jquery.flexisel.js"></script>
+    <script type="text/javascript" src="/Assets/client/js/jquery.flexisel.js"></script>
+    <script src="/Assets/client/js/jquery.etalage.min.js"></script>
     <script>
-        jQuery(document).ready(function ($) {
+    jQuery(document).ready(function ($) {
+      $("#flexiselDemo1").flexisel({
+        visibleItems: 5,
+        animationSpeed: 1000,
+        autoPlay: true,
+        autoPlaySpeed: 3000,
+        pauseOnHover: true,
+        enableResponsiveBreakpoints: true,
+        responsiveBreakpoints: {
+          portrait: {
+            changePoint: 480,
+            visibleItems: 1
+          },
+          landscape: {
+            changePoint: 640,
+            visibleItems: 2
+          },
+          tablet: {
+            changePoint: 768,
+            visibleItems: 3
+          }
+        }
+      });
 
-            $('#etalage').etalage({
-                thumb_image_width: 300,
-                thumb_image_height: 400,
-                source_image_width: 900,
-                source_image_height: 1200,
-                show_hint: true,
-                click_callback: function (image_anchor, instance_id) {
-                    alert('Callback example:\nYou clicked on an image with the anchor: "' + image_anchor + '"\n(in Etalage instance: "' + instance_id + '")');
-                }
-            });
+      $('#etalage').etalage({
+        thumb_image_width: 300,
+        thumb_image_height: 400,
+        source_image_width: 900,
+        source_image_height: 1200,
+        show_hint: true,
+        click_callback: function (image_anchor, instance_id) {
+          alert('Callback example:\nYou clicked on an image with the anchor: "' + image_anchor + '"\n(in Etalage instance: "' + instance_id + '")');
+        }
+      });
 
-            $("#flexiselDemo1").flexisel({
-                visibleItems: 5,
-                animationSpeed: 1000,
-                autoPlay: true,
-                autoPlaySpeed: 3000,
-                pauseOnHover: true,
-                enableResponsiveBreakpoints: true,
-                responsiveBreakpoints: {
-                    portrait: {
-                        changePoint: 480,
-                        visibleItems: 1
-                    },
-                    landscape: {
-                        changePoint: 640,
-                        visibleItems: 2
-                    },
-                    tablet: {
-                        changePoint: 768,
-                        visibleItems: 3
-                    }
-                }
-            });
-        });
+    });
     </script>
 }
 
@@ -65,10 +64,10 @@
                     {
                         foreach (var image in moreImage)
                         {
-                <li>
-                    <img class="etalage_thumb_image img-responsive" src="@image" />
-                    <img class="etalage_source_image img-responsive" src="@image" title="" />
-                </li>
+                            <li>
+                                <img class="etalage_thumb_image img-responsive" src="@image" />
+                                <img class="etalage_source_image img-responsive" src="@image" title="" />
+                            </li>
                         }
                     }
                 }
@@ -86,6 +85,16 @@
             </div>
             <h6>@Model.Quantity sản phẩm trong kho</h6>
             <p>@Model.Description</p>
+            <div class="">
+                <h5>Thẻ ghi :</h5>
+                <ul class="">
+                    @foreach (var tag in (IEnumerable<AQ1.Web.Models.TagViewModel>)ViewBag.Tags)
+                    {
+                        <li><a href="/tag/@(tag.ID).html">/ @(tag.Name) / </a></li>
+                    }
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
             <div class="share">
                 <h5>Chia sẻ :</h5>
                 <ul class="share_nav">
@@ -105,10 +114,9 @@
     <ul id="flexiselDemo1">
         @foreach (var product in relatedProducts)
         {
-        <li><img src="@product.Image" /><div class="grid-flex"><a href="/@(product.Alias).p-@(product.ID).html">@product.Name</a><p>@product.Price</p></div></li>
+            <li><img src="@product.Image" /><div class="grid-flex"><a href="/@(product.Alias).p-@(product.ID).html">@product.Name</a><p>@product.Price</p></div></li>
         }
     </ul>
-
     <div class="toogle">
         <h3 class="m_3">Chi tiết sản phẩm</h3>
         <p class="m_text">@Html.Raw(Model.Detail)</p>
